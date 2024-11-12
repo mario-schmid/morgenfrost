@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final double circleDrawingPosLeft = 0.7;
 
   final double circleDigitalPosTop = 0.75;
-  final double circleDigitalPosLeft = 0.2;
+  final double circleDigitalPosLeft = 0.24;
 
   final double circleVectorPosTop = 0.3;
   final double circleVectorPosLeft = 0.85;
