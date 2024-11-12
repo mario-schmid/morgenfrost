@@ -5,19 +5,18 @@ class Vector extends StatelessWidget {
   Vector({super.key});
 
   final List<Image> list = [
-    Image.asset('assets/images/vector/mushroom-house-landscape.jpg'),
-    Image.asset('assets/images/vector/pyramids.jpg'),
-    Image.asset('assets/images/vector/spiral.jpg'),
-    Image.asset('assets/images/vector/face.jpg')
+    Image.asset('assets/images/vector/mushroom-house-landscape.jpg',
+        fit: BoxFit.cover),
+    Image.asset('assets/images/vector/pyramids.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/vector/spiral.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/vector/face.jpg', fit: BoxFit.cover)
   ];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double padding = size.width * 0.03 + size.height * 0.03;
-    EdgeInsets edgeInsets = EdgeInsets.fromLTRB(padding, padding, padding, 0);
-    EdgeInsets edgeInsetsEnd =
-        EdgeInsets.fromLTRB(padding, padding, padding, padding);
+    EdgeInsets edgeInsets = EdgeInsets.symmetric(
+        horizontal: size.width * 0.18, vertical: size.width * 0.04);
 
     return Container(
         decoration: const BoxDecoration(
@@ -26,40 +25,17 @@ class Vector extends StatelessWidget {
                 fit: BoxFit.cover)),
         height: double.infinity,
         width: double.infinity,
-        child: SingleChildScrollView(
-            child: Column(children: [
-          Padding(
-              padding: edgeInsets,
-              child: GestureDetector(
-                  onTap: () {
-                    showImageViewer(context, list[0].image,
-                        swipeDismissible: false);
-                  },
-                  child: list[0])),
-          Padding(
-              padding: edgeInsets,
-              child: GestureDetector(
-                  onTap: () {
-                    showImageViewer(context, list[1].image,
-                        swipeDismissible: false);
-                  },
-                  child: list[1])),
-          Padding(
-              padding: edgeInsets,
-              child: GestureDetector(
-                  onTap: () {
-                    showImageViewer(context, list[2].image,
-                        swipeDismissible: false);
-                  },
-                  child: list[2])),
-          Padding(
-              padding: edgeInsetsEnd,
-              child: GestureDetector(
-                  onTap: () {
-                    showImageViewer(context, list[3].image,
-                        swipeDismissible: false);
-                  },
-                  child: list[3]))
-        ])));
+        child: ListView.builder(
+            itemCount: 4,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                  padding: edgeInsets,
+                  child: GestureDetector(
+                      onTap: () {
+                        showImageViewer(context, list[index].image,
+                            swipeDismissible: false);
+                      },
+                      child: list[index]));
+            }));
   }
 }
