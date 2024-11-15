@@ -34,23 +34,23 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isHoveringMaya = false;
   bool isHoveringFimo = false;
 
-  final double circlePaintingPosTop = 0.4;
-  final double circlePaintingPosLeft = 0.45;
+  final double circlePaintingPosTop = 0.2;
+  final double circlePaintingPosLeft = 0.35;
 
-  final double circleDrawingPosTop = 0.7;
-  final double circleDrawingPosLeft = 0.7;
+  final double circleDrawingPosTop = 0.45;
+  final double circleDrawingPosLeft = 0.55;
 
-  final double circleDigitalPosTop = 0.75;
-  final double circleDigitalPosLeft = 0.24;
+  final double circleDigitalPosTop = 0.55;
+  final double circleDigitalPosLeft = 0.2;
 
-  final double circleVectorPosTop = 0.3;
-  final double circleVectorPosLeft = 0.85;
+  final double circleVectorPosTop = 0.22;
+  final double circleVectorPosLeft = 0.75;
 
-  final double circleMayaPosTop = 0.95;
-  final double circleMayaPosLeft = 0.95;
+  final double circleMayaPosTop = 0.8;
+  final double circleMayaPosLeft = 0.8;
 
-  final double circleFimoPosTop = 0.95;
-  final double circleFimoPosLeft = 0.5;
+  final double circleFimoPosTop = 0.75;
+  final double circleFimoPosLeft = 0.4;
 
   @override
   Widget build(BuildContext context) {
@@ -66,25 +66,14 @@ class _MyHomePageState extends State<MyHomePage> {
     late double borderSideSize;
     late double fontSize;
 
-    if (size.height > size.width) {
-      circlePaintingSize = size.width * 0.30;
-      circleDrawingSize = size.width * 0.30;
-      circleDigitalSize = size.width * 0.20;
-      circleVectorSize = size.width * 0.25;
-      circleFimoSize = size.width * 0.25;
-      circleMayaSize = size.width * 0.17;
-      borderSideSize = size.width * 0.002;
-      fontSize = size.width * 0.04;
-    } else {
-      circlePaintingSize = size.height * 0.30;
-      circleDrawingSize = size.height * 0.30;
-      circleDigitalSize = size.height * 0.20;
-      circleVectorSize = size.height * 0.25;
-      circleFimoSize = size.height * 0.25;
-      circleMayaSize = size.height * 0.17;
-      borderSideSize = size.height * 0.002;
-      fontSize = size.height * 0.04;
-    }
+    circlePaintingSize = size.width * 0.1 + size.height * 0.1;
+    circleDrawingSize = size.width * 0.1 + size.height * 0.1;
+    circleDigitalSize = size.width * 0.1 + size.height * 0.1;
+    circleVectorSize = size.width * 0.1 + size.height * 0.1;
+    circleFimoSize = size.width * 0.1 + size.height * 0.1;
+    circleMayaSize = size.width * 0.07 + size.height * 0.07;
+    borderSideSize = size.width * 0.001 + size.height * 0.001;
+    fontSize = size.width * 0.014 + size.height * 0.014;
 
     return Scaffold(
         body: Container(
@@ -96,8 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.infinity,
             child: Stack(children: [
               Positioned(
-                  top: size.height * circlePaintingPosTop - circlePaintingSize,
-                  left: size.width * circlePaintingPosLeft - circlePaintingSize,
+                  top: size.height * circlePaintingPosTop -
+                      circlePaintingSize / 2,
+                  left: size.width * circlePaintingPosLeft -
+                      circlePaintingSize / 2,
                   child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -121,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.white, width: borderSideSize),
                                 image: const DecorationImage(
                                     image:
-                                        AssetImage('assets/images/pattern.jpg'),
+                                        AssetImage('assets/images/circle.jpg'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text('painting...',
@@ -131,8 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontSize: fontSize)))),
                       ))),
               Positioned(
-                  top: size.height * circleDrawingPosTop - circleDrawingSize,
-                  left: size.width * circleDrawingPosLeft - circleDrawingSize,
+                  top:
+                      size.height * circleDrawingPosTop - circleDrawingSize / 2,
+                  left:
+                      size.width * circleDrawingPosLeft - circleDrawingSize / 2,
                   child: InkWell(
                       onTap: () {
                         Navigator.push(context,
@@ -154,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.white, width: borderSideSize),
                                 image: const DecorationImage(
                                     image:
-                                        AssetImage('assets/images/pattern.jpg'),
+                                        AssetImage('assets/images/circle.jpg'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text('drawing...',
@@ -164,8 +157,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontSize: fontSize)))),
                       ))),
               Positioned(
-                  top: size.height * circleDigitalPosTop - circleDigitalSize,
-                  left: size.width * circleDigitalPosLeft - circleDigitalSize,
+                  top:
+                      size.height * circleDigitalPosTop - circleDigitalSize / 2,
+                  left:
+                      size.width * circleDigitalPosLeft - circleDigitalSize / 2,
                   child: InkWell(
                       onTap: () {
                         Navigator.push(context,
@@ -187,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.white, width: borderSideSize),
                                 image: const DecorationImage(
                                     image:
-                                        AssetImage('assets/images/pattern.jpg'),
+                                        AssetImage('assets/images/circle.jpg'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text('digital...',
@@ -197,8 +192,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontSize: fontSize)))),
                       ))),
               Positioned(
-                  top: size.height * circleVectorPosTop - circleVectorSize,
-                  left: size.width * circleVectorPosLeft - circleVectorSize,
+                  top: size.height * circleVectorPosTop - circleVectorSize / 2,
+                  left: size.width * circleVectorPosLeft - circleVectorSize / 2,
                   child: InkWell(
                       onTap: () {
                         Navigator.push(context,
@@ -220,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.white, width: borderSideSize),
                                 image: const DecorationImage(
                                     image:
-                                        AssetImage('assets/images/pattern.jpg'),
+                                        AssetImage('assets/images/circle.jpg'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text('vector...',
@@ -230,8 +225,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontSize: fontSize)))),
                       ))),
               Positioned(
-                  top: size.height * circleMayaPosTop - circleMayaSize,
-                  left: size.width * circleMayaPosLeft - circleMayaSize,
+                  top: size.height * circleMayaPosTop - circleMayaSize / 2,
+                  left: size.width * circleMayaPosLeft - circleMayaSize / 2,
                   child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -255,7 +250,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.white, width: borderSideSize),
                                 image: const DecorationImage(
                                     image:
-                                        AssetImage('assets/images/pattern.jpg'),
+                                        AssetImage('assets/images/circle.jpg'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text('maya...',
@@ -265,8 +260,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontSize: fontSize)))),
                       ))),
               Positioned(
-                  top: size.height * circleFimoPosTop - circleFimoSize,
-                  left: size.width * circleFimoPosLeft - circleFimoSize,
+                  top: size.height * circleFimoPosTop - circleFimoSize / 2,
+                  left: size.width * circleFimoPosLeft - circleFimoSize / 2,
                   child: InkWell(
                       onTap: () {},
                       onHover: (value) {
@@ -277,15 +272,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Transform.scale(
                         scale: isHoveringFimo ? 0.95 : 1,
                         child: Container(
-                            height: circleMayaSize,
-                            width: circleMayaSize,
+                            height: circleFimoSize,
+                            width: circleFimoSize,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
                                     color: Colors.white, width: borderSideSize),
                                 image: const DecorationImage(
                                     image:
-                                        AssetImage('assets/images/pattern.jpg'),
+                                        AssetImage('assets/images/circle.jpg'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text('fimo...',
