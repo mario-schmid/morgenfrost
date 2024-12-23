@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:morgenfrost/digital.dart';
 import 'package:morgenfrost/drawing.dart';
-import 'package:morgenfrost/painting.dart';
 import 'package:morgenfrost/maya.dart';
+import 'package:morgenfrost/painting.dart';
 import 'package:morgenfrost/vector.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isHoveringMaya = false;
   bool isHoveringFimo = false;
 
+  List<bool> isHovering = [false, false, false, false, false, false, false];
+
   final double circlePaintingPosTop = 0.2;
   final double circlePaintingPosLeft = 0.35;
 
@@ -51,6 +54,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final double circleFimoPosTop = 0.75;
   final double circleFimoPosLeft = 0.4;
+
+  List<Image> list = [
+    Image.asset('assets/icons/kofi.png'),
+    Image.asset('assets/icons/paypal.png'),
+    Image.asset('assets/icons/patreon.png'),
+    Image.asset('assets/icons/buy-me-a-coffee.png'),
+    Image.asset('assets/icons/mastodon.png'),
+    Image.asset('assets/icons/matrix.png'),
+    Image.asset('assets/icons/github.png')
+  ];
+
+  List<Uri> urls = [
+    Uri.parse('https://ko-fi.com/mario_schmid'),
+    Uri.parse('https://www.paypal.com/paypalme/MarioSchmid1313'),
+    Uri.parse('https://www.patreon.com/c/mario_schmid'),
+    Uri.parse('https://buymeacoffee.com/mario_schmid'),
+    Uri.parse('https://mastodon.social/@morgenfrost'),
+    Uri.parse('https://matrix.to/#/@morgenfrost:matrix.org'),
+    Uri.parse('https://github.com/mario-schmid')
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -288,7 +311,60 @@ class _MyHomePageState extends State<MyHomePage> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: fontSize)))),
-                      )))
+                      ))),
+              Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                        height: 60,
+                        width: 420,
+                        child: GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 7,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 7),
+                            itemBuilder: (conterxt, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: InkWell(
+                                  onTap: () {},
+                                  onHover: (value) {
+                                    setState(() {
+                                      isHovering[index] = value;
+                                    });
+                                  },
+                                  child: Transform.scale(
+                                    scale: isHovering[index] ? 1.1 : 1,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              color: Colors.white, width: 1),
+                                          image: const DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/circle.jpg'),
+                                              fit: BoxFit.cover)),
+                                      child: IconButton(
+                                          padding: const EdgeInsets.all(10),
+                                          onPressed: () {
+                                            _launchUrl(urls[index]);
+                                          },
+                                          icon: list[index]),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            })),
+                  ))
             ])));
+  }
+}
+
+Future<void> _launchUrl(Uri url) async {
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
   }
 }
