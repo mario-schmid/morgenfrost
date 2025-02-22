@@ -7,16 +7,15 @@ import 'package:morgenfrost/vector.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: MyHomePage());
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: MyHomePage());
   }
 }
 
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Image.asset('assets/icons/buy-me-a-coffee.png'),
     Image.asset('assets/icons/mastodon.png'),
     Image.asset('assets/icons/matrix.png'),
-    Image.asset('assets/icons/github.png')
+    Image.asset('assets/icons/github.png'),
   ];
 
   List<Uri> urls = [
@@ -72,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Uri.parse('https://buymeacoffee.com/mario_schmid'),
     Uri.parse('https://mastodon.social/@morgenfrost'),
     Uri.parse('https://matrix.to/#/@morgenfrost:matrix.org'),
-    Uri.parse('https://github.com/mario-schmid')
+    Uri.parse('https://github.com/mario-schmid'),
   ];
 
   @override
@@ -99,267 +98,222 @@ class _MyHomePageState extends State<MyHomePage> {
     fontSize = size.width * 0.014 + size.height * 0.014;
 
     return Scaffold(
-        body: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/background.jpg'),
-                    fit: BoxFit.cover)),
-            height: double.infinity,
-            width: double.infinity,
-            child: Stack(children: [
-              Positioned(
-                  top: size.height * circlePaintingPosTop -
-                      circlePaintingSize / 2,
-                  left: size.width * circlePaintingPosLeft -
-                      circlePaintingSize / 2,
-                  child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Painting()));
-                      },
-                      onHover: (value) {
-                        setState(() {
-                          isHoveringPainting = value;
-                        });
-                      },
-                      child: Transform.scale(
-                        scale: isHoveringPainting ? 0.95 : 1,
-                        child: Container(
-                            height: circlePaintingSize,
-                            width: circlePaintingSize,
-                            decoration: BoxDecoration(
+      body: Container(
+        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.cover)),
+        height: double.infinity,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            Positioned(
+              top: size.height * circlePaintingPosTop - circlePaintingSize / 2,
+              left: size.width * circlePaintingPosLeft - circlePaintingSize / 2,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Painting()));
+                },
+                onHover: (value) {
+                  setState(() {
+                    isHoveringPainting = value;
+                  });
+                },
+                child: Transform.scale(
+                  scale: isHoveringPainting ? 0.95 : 1,
+                  child: Container(
+                    height: circlePaintingSize,
+                    width: circlePaintingSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: borderSideSize),
+                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                    ),
+                    child: Center(child: Text('painting...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: size.height * circleDrawingPosTop - circleDrawingSize / 2,
+              left: size.width * circleDrawingPosLeft - circleDrawingSize / 2,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Drawing()));
+                },
+                onHover: (value) {
+                  setState(() {
+                    isHoveringDrawing = value;
+                  });
+                },
+                child: Transform.scale(
+                  scale: isHoveringDrawing ? 0.95 : 1,
+                  child: Container(
+                    height: circleDrawingSize,
+                    width: circleDrawingSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: borderSideSize),
+                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                    ),
+                    child: Center(child: Text('drawing...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: size.height * circleDigitalPosTop - circleDigitalSize / 2,
+              left: size.width * circleDigitalPosLeft - circleDigitalSize / 2,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Digital()));
+                },
+                onHover: (value) {
+                  setState(() {
+                    isHoveringDigital = value;
+                  });
+                },
+                child: Transform.scale(
+                  scale: isHoveringDigital ? 0.95 : 1,
+                  child: Container(
+                    height: circleDigitalSize,
+                    width: circleDigitalSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: borderSideSize),
+                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                    ),
+                    child: Center(child: Text('digital...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: size.height * circleVectorPosTop - circleVectorSize / 2,
+              left: size.width * circleVectorPosLeft - circleVectorSize / 2,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Vector()));
+                },
+                onHover: (value) {
+                  setState(() {
+                    isHoveringVector = value;
+                  });
+                },
+                child: Transform.scale(
+                  scale: isHoveringVector ? 0.95 : 1,
+                  child: Container(
+                    height: circleVectorSize,
+                    width: circleVectorSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: borderSideSize),
+                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                    ),
+                    child: Center(child: Text('vector...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: size.height * circleMayaPosTop - circleMayaSize / 2,
+              left: size.width * circleMayaPosLeft - circleMayaSize / 2,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Maya()));
+                },
+                onHover: (value) {
+                  setState(() {
+                    isHoveringMaya = value;
+                  });
+                },
+                child: Transform.scale(
+                  scale: isHoveringMaya ? 0.95 : 1,
+                  child: Container(
+                    height: circleMayaSize,
+                    width: circleMayaSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: borderSideSize),
+                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                    ),
+                    child: Center(child: Text('maya...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: size.height * circleFimoPosTop - circleFimoSize / 2,
+              left: size.width * circleFimoPosLeft - circleFimoSize / 2,
+              child: InkWell(
+                onTap: () {},
+                onHover: (value) {
+                  setState(() {
+                    isHoveringFimo = value;
+                  });
+                },
+                child: Transform.scale(
+                  scale: isHoveringFimo ? 0.95 : 1,
+                  child: Container(
+                    height: circleFimoSize,
+                    width: circleFimoSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: borderSideSize),
+                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                    ),
+                    child: Center(child: Text('fimo...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 60,
+                  width: 420,
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 7,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7),
+                    itemBuilder: (conterxt, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: InkWell(
+                          onTap: () {},
+                          onHover: (value) {
+                            setState(() {
+                              isHovering[index] = value;
+                            });
+                          },
+                          child: Transform.scale(
+                            scale: isHovering[index] ? 1.1 : 1,
+                            child: Container(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Colors.white, width: borderSideSize),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/circle.jpg'),
-                                    fit: BoxFit.cover)),
-                            child: Center(
-                                child: Text('painting...',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: fontSize)))),
-                      ))),
-              Positioned(
-                  top:
-                      size.height * circleDrawingPosTop - circleDrawingSize / 2,
-                  left:
-                      size.width * circleDrawingPosLeft - circleDrawingSize / 2,
-                  child: InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Drawing()));
-                      },
-                      onHover: (value) {
-                        setState(() {
-                          isHoveringDrawing = value;
-                        });
-                      },
-                      child: Transform.scale(
-                        scale: isHoveringDrawing ? 0.95 : 1,
-                        child: Container(
-                            height: circleDrawingSize,
-                            width: circleDrawingSize,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Colors.white, width: borderSideSize),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/circle.jpg'),
-                                    fit: BoxFit.cover)),
-                            child: Center(
-                                child: Text('drawing...',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: fontSize)))),
-                      ))),
-              Positioned(
-                  top:
-                      size.height * circleDigitalPosTop - circleDigitalSize / 2,
-                  left:
-                      size.width * circleDigitalPosLeft - circleDigitalSize / 2,
-                  child: InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Digital()));
-                      },
-                      onHover: (value) {
-                        setState(() {
-                          isHoveringDigital = value;
-                        });
-                      },
-                      child: Transform.scale(
-                        scale: isHoveringDigital ? 0.95 : 1,
-                        child: Container(
-                            height: circleDigitalSize,
-                            width: circleDigitalSize,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Colors.white, width: borderSideSize),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/circle.jpg'),
-                                    fit: BoxFit.cover)),
-                            child: Center(
-                                child: Text('digital...',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: fontSize)))),
-                      ))),
-              Positioned(
-                  top: size.height * circleVectorPosTop - circleVectorSize / 2,
-                  left: size.width * circleVectorPosLeft - circleVectorSize / 2,
-                  child: InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Vector()));
-                      },
-                      onHover: (value) {
-                        setState(() {
-                          isHoveringVector = value;
-                        });
-                      },
-                      child: Transform.scale(
-                        scale: isHoveringVector ? 0.95 : 1,
-                        child: Container(
-                            height: circleVectorSize,
-                            width: circleVectorSize,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Colors.white, width: borderSideSize),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/circle.jpg'),
-                                    fit: BoxFit.cover)),
-                            child: Center(
-                                child: Text('vector...',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: fontSize)))),
-                      ))),
-              Positioned(
-                  top: size.height * circleMayaPosTop - circleMayaSize / 2,
-                  left: size.width * circleMayaPosLeft - circleMayaSize / 2,
-                  child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Maya()));
-                      },
-                      onHover: (value) {
-                        setState(() {
-                          isHoveringMaya = value;
-                        });
-                      },
-                      child: Transform.scale(
-                        scale: isHoveringMaya ? 0.95 : 1,
-                        child: Container(
-                            height: circleMayaSize,
-                            width: circleMayaSize,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Colors.white, width: borderSideSize),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/circle.jpg'),
-                                    fit: BoxFit.cover)),
-                            child: Center(
-                                child: Text('maya...',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: fontSize)))),
-                      ))),
-              Positioned(
-                  top: size.height * circleFimoPosTop - circleFimoSize / 2,
-                  left: size.width * circleFimoPosLeft - circleFimoSize / 2,
-                  child: InkWell(
-                      onTap: () {},
-                      onHover: (value) {
-                        setState(() {
-                          isHoveringFimo = value;
-                        });
-                      },
-                      child: Transform.scale(
-                        scale: isHoveringFimo ? 0.95 : 1,
-                        child: Container(
-                            height: circleFimoSize,
-                            width: circleFimoSize,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Colors.white, width: borderSideSize),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/circle.jpg'),
-                                    fit: BoxFit.cover)),
-                            child: Center(
-                                child: Text('fimo...',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: fontSize)))),
-                      ))),
-              Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        height: 60,
-                        width: 420,
-                        child: GridView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 7,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 7),
-                            itemBuilder: (conterxt, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: InkWell(
-                                  onTap: () {},
-                                  onHover: (value) {
-                                    setState(() {
-                                      isHovering[index] = value;
-                                    });
-                                  },
-                                  child: Transform.scale(
-                                    scale: isHovering[index] ? 1.1 : 1,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              color: Colors.white, width: 1),
-                                          image: const DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/circle.jpg'),
-                                              fit: BoxFit.cover)),
-                                      child: IconButton(
-                                          padding: const EdgeInsets.all(10),
-                                          onPressed: () {
-                                            _launchUrl(urls[index]);
-                                          },
-                                          icon: list[index]),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            })),
-                  ))
-            ])));
+                                border: Border.all(color: Colors.white, width: 1),
+                                image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
+                              ),
+                              child: IconButton(
+                                padding: const EdgeInsets.all(10),
+                                onPressed: () {
+                                  _launchUrl(urls[index]);
+                                },
+                                icon: list[index],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
