@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Uri.parse('https://buymeacoffee.com/morgenfrost'),
     Uri.parse('https://mastodon.social/@morgenfrost'),
     Uri.parse('https://matrix.to/#/@morgenfrost:matrix.org'),
-    Uri.parse('https://github.com/mario-schmid'),
+    Uri.parse('https://github.com/morgenfrost-code'),
   ];
 
   @override
