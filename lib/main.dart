@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Image> list = [
     Image.asset('assets/icons/kofi.png'),
-    Image.asset('assets/icons/paypal.png'),
+    Image.asset('assets/icons/liberapay.png'),
     Image.asset('assets/icons/patreon.png'),
     Image.asset('assets/icons/buy-me-a-coffee.png'),
     Image.asset('assets/icons/mastodon.png'),
@@ -65,10 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   List<Uri> urls = [
-    Uri.parse('https://ko-fi.com/mario_schmid'),
-    Uri.parse('https://www.paypal.com/paypalme/MarioSchmid1313'),
-    Uri.parse('https://www.patreon.com/c/mario_schmid'),
-    Uri.parse('https://buymeacoffee.com/mario_schmid'),
+    Uri.parse('https://ko-fi.com/morgenfrost'),
+    Uri.parse('https://de.liberapay.com/morgenfrost'),
+    Uri.parse('https://www.patreon.com/c/morgenfrost'),
+    Uri.parse('https://buymeacoffee.com/morgenfrost'),
     Uri.parse('https://mastodon.social/@morgenfrost'),
     Uri.parse('https://matrix.to/#/@morgenfrost:matrix.org'),
     Uri.parse('https://github.com/mario-schmid'),
