@@ -8,6 +8,7 @@ class Vector extends StatelessWidget {
     Image.asset('assets/images/vector/mushroom-house-landscape.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/vector/pyramids.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/vector/sign.png', fit: BoxFit.cover),
+    Image.asset('assets/images/vector/leaves.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/vector/spiral.jpg', fit: BoxFit.cover),
   ];
 
