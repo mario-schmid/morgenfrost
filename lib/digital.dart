@@ -9,6 +9,7 @@ class Digital extends StatelessWidget {
     Image.asset('assets/images/digital/moon-and-stars.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/digital/tree.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/digital/leaves.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/digital/snow-landscape.jpg', fit: BoxFit.cover),
   ];
 
   @override
