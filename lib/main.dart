@@ -21,32 +21,72 @@ final GoRouter _router = GoRouter(
       routes: <RouteBase>[
         GoRoute(
           path: 'painting',
-          builder: (BuildContext context, GoRouterState state) {
-            return Painting();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: Painting(),
+              transitionDuration: Duration(milliseconds: 555),
+              reverseTransitionDuration: Duration(milliseconds: 0),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
+              },
+            );
           },
         ),
         GoRoute(
           path: 'drawing',
-          builder: (BuildContext context, GoRouterState state) {
-            return Drawing();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: Drawing(),
+              transitionDuration: Duration(milliseconds: 555),
+              reverseTransitionDuration: Duration(milliseconds: 0),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
+              },
+            );
           },
         ),
         GoRoute(
           path: 'digital',
-          builder: (BuildContext context, GoRouterState state) {
-            return Digital();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: Digital(),
+              transitionDuration: Duration(milliseconds: 555),
+              reverseTransitionDuration: Duration(milliseconds: 0),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
+              },
+            );
           },
         ),
         GoRoute(
           path: 'vector',
-          builder: (BuildContext context, GoRouterState state) {
-            return Vector();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: Vector(),
+              transitionDuration: Duration(milliseconds: 555),
+              reverseTransitionDuration: Duration(milliseconds: 0),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
+              },
+            );
           },
         ),
         GoRoute(
           path: 'maya',
-          builder: (BuildContext context, GoRouterState state) {
-            return Maya();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: Maya(),
+              transitionDuration: Duration(milliseconds: 555),
+              reverseTransitionDuration: Duration(milliseconds: 0),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
+              },
+            );
           },
         ),
       ],
