@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:morgenfrost/digital.dart';
 import 'package:morgenfrost/drawing.dart';
 import 'package:morgenfrost/maya.dart';
@@ -10,12 +11,55 @@ void main() {
   runApp(const HomePage());
 }
 
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const MyHomePage();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'painting',
+          builder: (BuildContext context, GoRouterState state) {
+            return Painting();
+          },
+        ),
+        GoRoute(
+          path: 'drawing',
+          builder: (BuildContext context, GoRouterState state) {
+            return Drawing();
+          },
+        ),
+        GoRoute(
+          path: 'digital',
+          builder: (BuildContext context, GoRouterState state) {
+            return Digital();
+          },
+        ),
+        GoRoute(
+          path: 'vector',
+          builder: (BuildContext context, GoRouterState state) {
+            return Vector();
+          },
+        ),
+        GoRoute(
+          path: 'maya',
+          builder: (BuildContext context, GoRouterState state) {
+            return Maya();
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(debugShowCheckedModeBanner: false, home: MyHomePage());
+    return MaterialApp.router(debugShowCheckedModeBanner: false, routerConfig: _router);
   }
 }
 
@@ -108,9 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
               top: size.height * circlePaintingPosTop - circlePaintingSize / 2,
               left: size.width * circlePaintingPosLeft - circlePaintingSize / 2,
               child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Painting()));
-                },
+                onTap: () => context.go('/painting'),
                 onHover: (value) {
                   setState(() {
                     isHoveringPainting = value;
@@ -135,9 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
               top: size.height * circleDrawingPosTop - circleDrawingSize / 2,
               left: size.width * circleDrawingPosLeft - circleDrawingSize / 2,
               child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Drawing()));
-                },
+                onTap: () => context.go('/drawing'),
                 onHover: (value) {
                   setState(() {
                     isHoveringDrawing = value;
@@ -162,9 +202,8 @@ class _MyHomePageState extends State<MyHomePage> {
               top: size.height * circleDigitalPosTop - circleDigitalSize / 2,
               left: size.width * circleDigitalPosLeft - circleDigitalSize / 2,
               child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Digital()));
-                },
+                onTap: () => context.go('/digital'),
+
                 onHover: (value) {
                   setState(() {
                     isHoveringDigital = value;
@@ -189,9 +228,8 @@ class _MyHomePageState extends State<MyHomePage> {
               top: size.height * circleVectorPosTop - circleVectorSize / 2,
               left: size.width * circleVectorPosLeft - circleVectorSize / 2,
               child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Vector()));
-                },
+                onTap: () => context.go('/vector'),
+
                 onHover: (value) {
                   setState(() {
                     isHoveringVector = value;
@@ -216,9 +254,7 @@ class _MyHomePageState extends State<MyHomePage> {
               top: size.height * circleMayaPosTop - circleMayaSize / 2,
               left: size.width * circleMayaPosLeft - circleMayaSize / 2,
               child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Maya()));
-                },
+                onTap: () => context.go('/maya'),
                 onHover: (value) {
                   setState(() {
                     isHoveringMaya = value;
