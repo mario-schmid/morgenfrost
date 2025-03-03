@@ -5,14 +5,14 @@ class Painting extends StatelessWidget {
   Painting({super.key});
 
   final List<Image> list = [
-    Image.asset('assets/images/paintings/under-red-sky.jpg', fit: BoxFit.cover),
-    Image.asset('assets/images/paintings/mushroom-family.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/paintings/beautiful-world.jpg', fit: BoxFit.cover),
-    Image.asset('assets/images/paintings/pink-flower.jpg', fit: BoxFit.cover),
-    Image.asset('assets/images/paintings/bloom.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/paintings/mushroom-family.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/paintings/under-red-sky.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/paintings/blooms.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/paintings/flowers.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/paintings/star.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/paintings/waves.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/paintings/bloom.jpg', fit: BoxFit.cover),
     Image.asset('assets/images/paintings/house.jpg', fit: BoxFit.cover),
   ];
 

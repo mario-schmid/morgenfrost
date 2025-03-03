@@ -21,72 +21,32 @@ final GoRouter _router = GoRouter(
       routes: <RouteBase>[
         GoRoute(
           path: 'painting',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              key: state.pageKey,
-              child: Painting(),
-              transitionDuration: Duration(milliseconds: 555),
-              reverseTransitionDuration: Duration(milliseconds: 0),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
-              },
-            );
+          builder: (BuildContext context, GoRouterState state) {
+            return Painting();
           },
         ),
         GoRoute(
           path: 'drawing',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              key: state.pageKey,
-              child: Drawing(),
-              transitionDuration: Duration(milliseconds: 555),
-              reverseTransitionDuration: Duration(milliseconds: 0),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
-              },
-            );
+          builder: (BuildContext context, GoRouterState state) {
+            return Drawing();
           },
         ),
         GoRoute(
           path: 'digital',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              key: state.pageKey,
-              child: Digital(),
-              transitionDuration: Duration(milliseconds: 555),
-              reverseTransitionDuration: Duration(milliseconds: 0),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
-              },
-            );
+          builder: (BuildContext context, GoRouterState state) {
+            return Digital();
           },
         ),
         GoRoute(
           path: 'vector',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              key: state.pageKey,
-              child: Vector(),
-              transitionDuration: Duration(milliseconds: 555),
-              reverseTransitionDuration: Duration(milliseconds: 0),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
-              },
-            );
+          builder: (BuildContext context, GoRouterState state) {
+            return Vector();
           },
         ),
         GoRoute(
           path: 'maya',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              key: state.pageKey,
-              child: Maya(),
-              transitionDuration: Duration(milliseconds: 555),
-              reverseTransitionDuration: Duration(milliseconds: 0),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return ScaleTransition(scale: Tween<double>(begin: 1.1, end: 1.0).animate(animation), child: child);
-              },
-            );
+          builder: (BuildContext context, GoRouterState state) {
+            return Maya();
           },
         ),
       ],
@@ -120,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<bool> isHovering = [false, false, false, false, false, false, false];
 
-  final double circlePaintingPosTop = 0.2;
+  /*final double circlePaintingPosTop = 0.2;
   final double circlePaintingPosLeft = 0.35;
 
   final double circleDrawingPosTop = 0.45;
@@ -136,6 +96,24 @@ class _MyHomePageState extends State<MyHomePage> {
   final double circleMayaPosLeft = 0.8;
 
   final double circleFimoPosTop = 0.75;
+  final double circleFimoPosLeft = 0.4;*/
+
+  final double circlePaintingPosTop = 0.18;
+  final double circlePaintingPosLeft = 0.35;
+
+  final double circleDrawingPosTop = 0.34;
+  final double circleDrawingPosLeft = 0.58;
+
+  final double circleDigitalPosTop = 0.44;
+  final double circleDigitalPosLeft = 0.16;
+
+  final double circleVectorPosTop = 0.20;
+  final double circleVectorPosLeft = 0.84;
+
+  final double circleMayaPosTop = 0.64;
+  final double circleMayaPosLeft = 0.8;
+
+  final double circleFimoPosTop = 0.6;
   final double circleFimoPosLeft = 0.4;
 
   List<Image> list = [
@@ -178,12 +156,12 @@ class _MyHomePageState extends State<MyHomePage> {
     circleVectorSize = size.width * 0.1 + size.height * 0.1;
     circleFimoSize = size.width * 0.1 + size.height * 0.1;
     circleMayaSize = size.width * 0.07 + size.height * 0.07;
-    borderSideSize = size.width * 0.001 + size.height * 0.001;
-    fontSize = size.width * 0.014 + size.height * 0.014;
+    borderSideSize = size.width * 0.003 + size.height * 0.003;
+    fontSize = size.width * 0.016 + size.height * 0.016;
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.cover)),
+        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/main-background.jpg'), fit: BoxFit.cover)),
         height: double.infinity,
         width: double.infinity,
         child: Stack(
@@ -203,12 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: circlePaintingSize,
                     width: circlePaintingSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: borderSideSize),
-                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                    ),
-                    child: Center(child: Text('painting...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
+                    child: Center(child: Text('paintings...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
               ),
@@ -228,11 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: circleDrawingSize,
                     width: circleDrawingSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: borderSideSize),
-                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
                     child: Center(child: Text('drawing...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
@@ -254,11 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: circleDigitalSize,
                     width: circleDigitalSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: borderSideSize),
-                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
                     child: Center(child: Text('digital...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
@@ -280,11 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: circleVectorSize,
                     width: circleVectorSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: borderSideSize),
-                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
                     child: Center(child: Text('vector...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
@@ -305,11 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: circleMayaSize,
                     width: circleMayaSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: borderSideSize),
-                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
                     child: Center(child: Text('maya...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
@@ -330,11 +288,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: circleFimoSize,
                     width: circleFimoSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: borderSideSize),
-                      image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
                     child: Center(child: Text('fimo...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
@@ -365,11 +319,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Transform.scale(
                             scale: isHovering[index] ? 1.1 : 1,
                             child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white, width: 1),
-                                image: const DecorationImage(image: AssetImage('assets/images/circle.jpg'), fit: BoxFit.cover),
-                              ),
+                              decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: 3)),
                               child: IconButton(
                                 padding: const EdgeInsets.all(10),
                                 onPressed: () {
