@@ -6,8 +6,7 @@ class Maya extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: MyHomePage());
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: MyHomePage());
   }
 }
 
@@ -35,10 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/background.jpg'),
-                fit: BoxFit.cover)),
+        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.fill)),
         height: double.infinity,
         width: double.infinity,
         child: Center(
@@ -52,13 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             child: Transform.scale(
-                scale: isHoveringQrCode ? 0.95 : 1,
-                child: Image.asset(
-                  'assets/images/qr-code.png',
-                  height: sizeQrCode,
-                  width: sizeQrCode,
-                  fit: BoxFit.cover,
-                )),
+              scale: isHoveringQrCode ? 0.95 : 1,
+              child: Image.asset('assets/images/qr-code.png', height: sizeQrCode, width: sizeQrCode, fit: BoxFit.cover),
+            ),
           ),
         ),
       ),
@@ -67,8 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 Future<void> _launchUrl() async {
-  Uri url = Uri.parse(
-      'https://play.google.com/store/apps/details?id=com.software.maya');
+  Uri url = Uri.parse('https://play.google.com/store/apps/details?id=com.software.maya');
   if (!await launchUrl(url)) {
     throw Exception('Could not launch $url');
   }

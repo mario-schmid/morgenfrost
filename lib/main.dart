@@ -98,23 +98,23 @@ class _MyHomePageState extends State<MyHomePage> {
   final double circleFimoPosTop = 0.75;
   final double circleFimoPosLeft = 0.4;*/
 
-  final double circlePaintingPosTop = 0.18;
-  final double circlePaintingPosLeft = 0.35;
+  final double circlePaintingPosTop = 0.20;
+  final double circlePaintingPosLeft = 0.40;
 
-  final double circleDrawingPosTop = 0.34;
-  final double circleDrawingPosLeft = 0.58;
+  final double circleDrawingPosTop = 0.36;
+  final double circleDrawingPosLeft = 0.60;
 
-  final double circleDigitalPosTop = 0.44;
-  final double circleDigitalPosLeft = 0.16;
+  final double circleDigitalPosTop = 0.40;
+  final double circleDigitalPosLeft = 0.2;
 
-  final double circleVectorPosTop = 0.20;
-  final double circleVectorPosLeft = 0.84;
+  final double circleVectorPosTop = 0.22;
+  final double circleVectorPosLeft = 0.80;
 
-  final double circleMayaPosTop = 0.64;
-  final double circleMayaPosLeft = 0.8;
+  final double circleMayaPosTop = 0.60;
+  final double circleMayaPosLeft = 0.74;
 
-  final double circleFimoPosTop = 0.6;
-  final double circleFimoPosLeft = 0.4;
+  final double circleFimoPosTop = 0.56;
+  final double circleFimoPosLeft = 0.44;
 
   List<Image> list = [
     Image.asset('assets/icons/kofi.png'),
@@ -151,17 +151,17 @@ class _MyHomePageState extends State<MyHomePage> {
     late double fontSize;
 
     circlePaintingSize = size.width * 0.1 + size.height * 0.1;
-    circleDrawingSize = size.width * 0.1 + size.height * 0.1;
-    circleDigitalSize = size.width * 0.1 + size.height * 0.1;
-    circleVectorSize = size.width * 0.1 + size.height * 0.1;
-    circleFimoSize = size.width * 0.1 + size.height * 0.1;
-    circleMayaSize = size.width * 0.07 + size.height * 0.07;
+    circleDrawingSize = size.width * 0.09 + size.height * 0.1;
+    circleDigitalSize = size.width * 0.09 + size.height * 0.1;
+    circleVectorSize = size.width * 0.09 + size.height * 0.1;
+    circleFimoSize = size.width * 0.09 + size.height * 0.1;
+    circleMayaSize = size.width * 0.09 + size.height * 0.07;
     borderSideSize = size.width * 0.003 + size.height * 0.003;
     fontSize = size.width * 0.016 + size.height * 0.016;
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/main-background.jpg'), fit: BoxFit.cover)),
+        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/main-background.jpg'), fit: BoxFit.fill)),
         height: double.infinity,
         width: double.infinity,
         child: Stack(
@@ -319,7 +319,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Transform.scale(
                             scale: isHovering[index] ? 1.1 : 1,
                             child: Container(
-                              decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: 3)),
+                              decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: 2)),
                               child: IconButton(
                                 padding: const EdgeInsets.all(10),
                                 onPressed: () {

@@ -22,7 +22,7 @@ class Painting extends StatelessWidget {
     EdgeInsets edgeInsets = EdgeInsets.symmetric(horizontal: size.width * 0.18, vertical: size.width * 0.04);
 
     return Container(
-      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.cover)),
+      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.fill)),
       height: double.infinity,
       width: double.infinity,
       child: ListView.builder(
