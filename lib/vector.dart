@@ -1,39 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 class Vector extends StatelessWidget {
   Vector({super.key});
 
   final List<Image> list = [
-    Image.asset('assets/images/vector/mushroom-house-landscape.jpg', fit: BoxFit.cover),
-    Image.asset('assets/images/vector/pyramids.jpg', fit: BoxFit.cover),
-    Image.asset('assets/images/vector/sign.png', fit: BoxFit.cover),
-    Image.asset('assets/images/vector/leaves.jpg', fit: BoxFit.cover),
-    Image.asset('assets/images/vector/spiral.jpg', fit: BoxFit.cover),
+    Image.asset('assets/images/vector/leaves.jpg', fit: BoxFit.contain),
+    Image.asset('assets/images/vector/pyramids.jpg', fit: BoxFit.contain),
+    Image.asset('assets/images/vector/sign.png', fit: BoxFit.contain),
+    Image.asset('assets/images/vector/spiral.jpg', fit: BoxFit.contain),
   ];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     EdgeInsets edgeInsets = EdgeInsets.symmetric(horizontal: size.width * 0.18, vertical: size.width * 0.04);
+    double sigma = size.width * 0.01;
 
     return Container(
       decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.fill)),
       height: double.infinity,
       width: double.infinity,
-      child: ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (BuildContext context, int index) {
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: 1 / .6),
+        itemBuilder: (context, index) {
           return Padding(
             padding: edgeInsets,
             child: GestureDetector(
               onTap: () {
                 showImageViewer(context, list[index].image, swipeDismissible: false);
               },
-              child: list[index],
+              child: SimpleShadow(opacity: 1.0, color: Colors.black, offset: Offset(0, 0), sigma: sigma, child: Center(child: list[index])),
             ),
           );
         },
+        itemCount: list.length,
       ),
     );
   }

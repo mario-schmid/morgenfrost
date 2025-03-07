@@ -32,6 +32,9 @@ class _MyHomePageState extends State<MyHomePage> {
       sizeQrCode = size.height * 0.5;
     }
 
+    double blur = sizeQrCode * 0.04;
+    double spread = sizeQrCode * 0.04;
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/background.jpg'), fit: BoxFit.fill)),
@@ -49,7 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Transform.scale(
               scale: isHoveringQrCode ? 0.95 : 1,
-              child: Image.asset('assets/images/qr-code.png', height: sizeQrCode, width: sizeQrCode, fit: BoxFit.cover),
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.5),
+                      offset: Offset.zero,
+                      blurRadius: blur,
+                      spreadRadius: spread,
+                      blurStyle: BlurStyle.normal,
+                    ),
+                  ],
+                ),
+                child: Image.asset('assets/images/qr-code.png', height: sizeQrCode, width: sizeQrCode, fit: BoxFit.cover),
+              ),
             ),
           ),
         ),

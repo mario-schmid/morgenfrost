@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
     late double borderSideSize;
     late double fontSize;
 
-    circlePaintingSize = size.width * 0.1 + size.height * 0.1;
+    circlePaintingSize = size.width * 0.09 + size.height * 0.1;
     circleDrawingSize = size.width * 0.09 + size.height * 0.1;
     circleDigitalSize = size.width * 0.09 + size.height * 0.1;
     circleVectorSize = size.width * 0.09 + size.height * 0.1;
@@ -182,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: circlePaintingSize,
                     width: circlePaintingSize,
                     decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
-                    child: Center(child: Text('paintings...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                    child: Center(child: Text('painting...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
               ),
