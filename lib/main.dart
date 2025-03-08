@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:morgenfrost/digital.dart';
 import 'package:morgenfrost/drawing.dart';
-import 'package:morgenfrost/maya.dart';
+import 'package:morgenfrost/coding.dart';
 import 'package:morgenfrost/painting.dart';
 import 'package:morgenfrost/vector.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -44,9 +44,9 @@ final GoRouter _router = GoRouter(
           },
         ),
         GoRoute(
-          path: 'maya',
+          path: 'coding',
           builder: (BuildContext context, GoRouterState state) {
-            return Maya();
+            return Coding();
           },
         ),
       ],
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isHoveringDrawing = false;
   bool isHoveringDigital = false;
   bool isHoveringVector = false;
-  bool isHoveringMaya = false;
+  bool isHoveringCoding = false;
   bool isHoveringFimo = false;
 
   List<bool> isHovering = [false, false, false, false, false, false, false];
@@ -92,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final double circleVectorPosTop = 0.22;
   final double circleVectorPosLeft = 0.75;
 
-  final double circleMayaPosTop = 0.8;
-  final double circleMayaPosLeft = 0.8;
+  final double circleCodingPosTop = 0.8;
+  final double circleCodingPosLeft = 0.8;
 
   final double circleFimoPosTop = 0.75;
   final double circleFimoPosLeft = 0.4;*/
@@ -110,8 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final double circleVectorPosTop = 0.22;
   final double circleVectorPosLeft = 0.80;
 
-  final double circleMayaPosTop = 0.60;
-  final double circleMayaPosLeft = 0.74;
+  final double circleCodingPosTop = 0.60;
+  final double circleCodingPosLeft = 0.74;
 
   final double circleFimoPosTop = 0.56;
   final double circleFimoPosLeft = 0.44;
@@ -140,24 +140,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    late double circlePaintingSize;
-    late double circleDrawingSize;
-    late double circleDigitalSize;
-    late double circleVectorSize;
-    late double circleMayaSize;
-    late double circleFimoSize;
+    double circlePaintingSize = size.width * 0.09 + size.height * 0.1;
+    double circleDrawingSize = size.width * 0.09 + size.height * 0.1;
+    double circleDigitalSize = size.width * 0.09 + size.height * 0.1;
+    double circleVectorSize = size.width * 0.09 + size.height * 0.1;
+    double circleFimoSize = size.width * 0.09 + size.height * 0.1;
+    double circleCodingSize = size.width * 0.09 + size.height * 0.07;
 
-    late double borderSideSize;
-    late double fontSize;
-
-    circlePaintingSize = size.width * 0.09 + size.height * 0.1;
-    circleDrawingSize = size.width * 0.09 + size.height * 0.1;
-    circleDigitalSize = size.width * 0.09 + size.height * 0.1;
-    circleVectorSize = size.width * 0.09 + size.height * 0.1;
-    circleFimoSize = size.width * 0.09 + size.height * 0.1;
-    circleMayaSize = size.width * 0.09 + size.height * 0.07;
-    borderSideSize = size.width * 0.003 + size.height * 0.003;
-    fontSize = size.width * 0.016 + size.height * 0.016;
+    double borderSideSize = size.width * 0.003 + size.height * 0.003;
+    double fontSize = size.width * 0.016 + size.height * 0.016;
 
     return Scaffold(
       body: Container(
@@ -253,22 +244,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Positioned(
-              top: size.height * circleMayaPosTop - circleMayaSize / 2,
-              left: size.width * circleMayaPosLeft - circleMayaSize / 2,
+              top: size.height * circleCodingPosTop - circleCodingSize / 2,
+              left: size.width * circleCodingPosLeft - circleCodingSize / 2,
               child: InkWell(
-                onTap: () => context.go('/maya'),
+                onTap: () => context.go('/coding'),
                 onHover: (value) {
                   setState(() {
-                    isHoveringMaya = value;
+                    isHoveringCoding = value;
                   });
                 },
                 child: Transform.scale(
-                  scale: isHoveringMaya ? 0.95 : 1,
+                  scale: isHoveringCoding ? 0.95 : 1,
                   child: Container(
-                    height: circleMayaSize,
-                    width: circleMayaSize,
+                    height: circleCodingSize,
+                    width: circleCodingSize,
                     decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
-                    child: Center(child: Text('maya...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
+                    child: Center(child: Text('coding...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
               ),
