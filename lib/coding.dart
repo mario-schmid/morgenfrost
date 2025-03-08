@@ -18,18 +18,18 @@ class CodingPage extends StatefulWidget {
 }
 
 class _CodingPageState extends State<CodingPage> {
-  bool isHoveringMayaCalendarApp = false;
+  bool isHoveringMaya = false;
 
   List<bool> isHovering = [false];
 
-  final double circleMayaCalendarAppPosTop = 0.30;
-  final double circleMayaCalendarAppPosLeft = 0.80;
+  final double circleMayaPosTop = 0.30;
+  final double circleMayaPosLeft = 0.80;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    double circleMayaCalendarAppSize = size.width * 0.12 + size.height * 0.13;
+    double circleMayaSize = size.width * 0.12 + size.height * 0.13;
 
     double borderSideSize = size.width * 0.003 + size.height * 0.003;
     double fontSize = size.width * 0.016 + size.height * 0.016;
@@ -42,24 +42,22 @@ class _CodingPageState extends State<CodingPage> {
         child: Stack(
           children: [
             Positioned(
-              top: size.height * circleMayaCalendarAppPosTop - circleMayaCalendarAppSize / 2,
-              left: size.width * circleMayaCalendarAppPosLeft - circleMayaCalendarAppSize / 2,
+              top: size.height * circleMayaPosTop - circleMayaSize / 2,
+              left: size.width * circleMayaPosLeft - circleMayaSize / 2,
               child: InkWell(
                 onTap: () => _launchUrl(),
                 onHover: (value) {
                   setState(() {
-                    isHoveringMayaCalendarApp = value;
+                    isHoveringMaya = value;
                   });
                 },
                 child: Transform.scale(
-                  scale: isHoveringMayaCalendarApp ? 0.95 : 1,
+                  scale: isHoveringMaya ? 0.95 : 1,
                   child: Container(
-                    height: circleMayaCalendarAppSize,
-                    width: circleMayaCalendarAppSize,
+                    height: circleMayaSize,
+                    width: circleMayaSize,
                     decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: borderSideSize)),
-                    child: Center(
-                      child: Text('Maya \n Calendar \n App', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize)),
-                    ),
+                    child: Center(child: Text('maya', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: fontSize))),
                   ),
                 ),
               ),
@@ -72,7 +70,7 @@ class _CodingPageState extends State<CodingPage> {
 }
 
 Future<void> _launchUrl() async {
-  Uri url = Uri.parse('https://github.com/morgenfrost1313/maya');
+  Uri url = Uri.parse('https://gitlab.com/morgenfrost/maya');
   if (!await launchUrl(url)) {
     throw Exception('Could not launch $url');
   }

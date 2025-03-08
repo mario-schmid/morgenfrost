@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Image.asset('assets/icons/buy-me-a-coffee.png'),
     Image.asset('assets/icons/mastodon.png'),
     Image.asset('assets/icons/matrix.png'),
-    Image.asset('assets/icons/github.png'),
+    Image.asset('assets/icons/gitlab.png'),
   ];
 
   List<Uri> urls = [
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Uri.parse('https://buymeacoffee.com/morgenfrost'),
     Uri.parse('https://mastodon.social/@morgenfrost'),
     Uri.parse('https://matrix.to/#/@morgenfrost:matrix.org'),
-    Uri.parse('https://github.com/morgenfrost1313'),
+    Uri.parse('https://gitlab.com/morgenfrost'),
   ];
 
   @override
